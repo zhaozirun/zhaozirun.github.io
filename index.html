@@ -242,7 +242,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-11-02 21:26:25 / Modified: 22:17:15" itemprop="dateCreated datePublished" datetime="2021-11-02T21:26:25+08:00">2021-11-02</time>
+      <time title="Created: 2021-11-02 21:26:25 / Modified: 22:26:31" itemprop="dateCreated datePublished" datetime="2021-11-02T21:26:25+08:00">2021-11-02</time>
     </span>
 
   
@@ -324,7 +324,7 @@
   - 联邦学习场景中，处理灵活性能的关键是每个本地目标函数可以进行非精确的解算。这意味着更多的本地迭代意味着更精确的本地结果。
   - $$\gamma$$-inexact solution
 </code></pre>
-<p>对函数$$h(w;w_0)=F(w)+\frac{\mu}{2}||w-w_0||^2$$，且$$\gamma\in[0,1]$$，我们说如果$$||\nabla h(w^*;w_0)||\le \gamma||\nabla h(w_0;w_0)||$$，其中$$\nabla h(w;w_0)=\nabla F(w)+\mu(w-w_0)$$，那么，$$w^*$$是$${\min}_wh(w;w_0)$$的一个$$\gamma$$-非精确解。<br>其中，越小的$$\gamma$$对应越高的精确度。</p>
+<p>对函数$h(w;w_0)=F(w)+\frac{\mu}{2}||w-w_0||^2$，且$$\gamma\in[0,1]$$，我们说如果$$||\nabla h(w^*;w_0)||\le \gamma||\nabla h(w_0;w_0)||$$，其中$$\nabla h(w;w_0)=\nabla F(w)+\mu(w-w_0)$$，那么，$$w^*$$是$${\min}_wh(w;w_0)$$的一个$$\gamma$$-非精确解。<br>其中，越小的$$\gamma$$对应越高的精确度。</p>
 <pre><code>  - 我们用$$\gamma$$-不确定性在Section 4的分析中，通过每轮（外部轮）的本地解算器衡量本地计算的amount（数量；量级；计算量）。在早期讨论中，不同的设备在解决本地子问题的时候由于不同的系统条件会执行不同的进程，因此变化的$$\gamma$$是很重要的，其随着设备的不同和轮次的不同变化。为了符号的简便，Section 4中将讨论相同的$$\gamma$$，之后在Corollary 9提供变化的$$\gamma$$。
   - FedAvg的参数设置
      - 设备k的本地代理：$$F_k(\cdot)$$
