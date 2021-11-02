@@ -179,7 +179,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-11-02 22:01:47 / Modified: 22:02:14" itemprop="dateCreated datePublished" datetime="2021-11-02T22:01:47+08:00">2021-11-02</time>
+      <time title="Created: 2021-11-02 22:01:47 / Modified: 22:05:18" itemprop="dateCreated datePublished" datetime="2021-11-02T22:01:47+08:00">2021-11-02</time>
     </span>
 
   
@@ -192,9 +192,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><a name="lKEgN"></a></p>
-<h1 id="FedProx"><a href="#FedProx" class="headerlink" title="FedProx"></a>FedProx</h1><ul>
-<li><p>作者：Tian Li，Anit Kumar Sahu，Manzil Zaheer，Maziar Sanjabi，Ameet Talwalkar，Virginia Smithan Li1Anit Kur<br><a name="mBxsc"></a></p>
+          <h1 id="FedProx"><a href="#FedProx" class="headerlink" title="FedProx"></a>FedProx</h1><ul>
+<li><p>作者：Tian Li，Anit Kumar Sahu，Manzil Zaheer，Maziar Sanjabi，Ameet Talwalkar，Virginia Smithan Li1Anit Kur  </p>
 <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><ul>
 <li><p>联邦学习的两大挑战：网络每个设备的系统特征存在显著差异（系统异构性），非独立同分布数据（统计不确定性，统计数据异构性）</p>
 </li>
@@ -206,7 +205,7 @@
 </li>
 <li><p>从理论上讲，当从非独立同分布（统计异质性）学习数据时，我们的框架提供了收敛保证，同时通过允许每个参与设备执行可变工作量（系统异质性）来遵守设备级系统约束。</p>
 </li>
-<li><p>实际上，我们通过一组真实的联邦数据集证明了FEDProx比FedAvg具有更健壮的收敛性。特别是，相对于FedAvg来说，在高度异质性的环境中，FedProx显示出明显更稳定和准确的收敛行为，平均将绝对测试精度提高了22%。<br><a name="jLA8G"></a></p>
+<li><p>实际上，我们通过一组真实的联邦数据集证明了FEDProx比FedAvg具有更健壮的收敛性。特别是，相对于FedAvg来说，在高度异质性的环境中，FedProx显示出明显更稳定和准确的收敛行为，平均将绝对测试精度提高了22%。</p>
 <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2></li>
 <li><p>FedAvg</p>
 <ul>
@@ -231,7 +230,7 @@
 </li>
 <li><p>文章结构</p>
 <ul>
-<li>本文的其余部分组织如下。在第2节中，我们提供了联邦学习的背景和相关工作的概述。然后，我们在第3节介绍了我们提出的框架FedProx，并在第4节推导了该框架的收敛保证，该框架考虑了统计数据和系统的异质性。最后，在第5节中，我们提供了一套完整的合成和真实世界联邦数据集的实验评估。我们的实证结果有助于说明和验证我们的理论分析，并证明了在异构网络中FedProx对FedAvg的实际改进。<br><a name="HKjbS"></a><h2 id="背景和相关文献"><a href="#背景和相关文献" class="headerlink" title="背景和相关文献"></a>背景和相关文献</h2></li>
+<li>本文的其余部分组织如下。在第2节中，我们提供了联邦学习的背景和相关工作的概述。然后，我们在第3节介绍了我们提出的框架FedProx，并在第4节推导了该框架的收敛保证，该框架考虑了统计数据和系统的异质性。最后，在第5节中，我们提供了一套完整的合成和真实世界联邦数据集的实验评估。我们的实证结果有助于说明和验证我们的理论分析，并证明了在异构网络中FedProx对FedAvg的实际改进。<h2 id="背景和相关文献"><a href="#背景和相关文献" class="headerlink" title="背景和相关文献"></a>背景和相关文献</h2></li>
 </ul>
 </li>
 <li><p>最近提出的优化方法一般对应于具体的联邦学习挑战。这些方法对传统对分布式方法例如ADMM有重大提升，或对mini-batch方法有重大提升。对mini-batch提升的途径主要包括： 允许不精确的本地更新，以平衡大型网络的通信和计算；允许任意通信轮的激活一组设备子集。</p>
@@ -250,27 +249,27 @@
 </li>
 <li><p>在这项工作中，受FedAvg的启发，我们探索了一个更广泛的框架FedProx，它能够处理异构联邦环境，同时保持相似的隐私和计算优势。我们通过本地函数之间的统计数据的差异性来分析框架的收敛行为，同时考虑实际系统约束。我们的差异性表述受到求解线性方程组的随机化Kaczmarz方法的启发，类似的假设已用于分析其他环境下的SGD变体。我们提出的框架为异构联邦网络中的优化提供了改进的鲁棒性和稳定性。</p>
 </li>
-<li><p>最后，在相关工作方面，我们注意到，我们提出的工作的两个方面——FedProx中的近端项和我们分析中使用的有界差异性假设——已经在优化文献中进行了研究，尽管通常具有非常不同的动机和在非联邦环境中。为完整起见，我们在附录B中进一步讨论了这项背景工作。<br><a name="L9bwI"></a></p>
+<li><p>最后，在相关工作方面，我们注意到，我们提出的工作的两个方面——FedProx中的近端项和我们分析中使用的有界差异性假设——已经在优化文献中进行了研究，尽管通常具有非常不同的动机和在非联邦环境中。为完整起见，我们在附录B中进一步讨论了这项背景工作。</p>
 <h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2></li>
 </ul>
 </li>
 <li><p>FedAvg</p>
 </li>
 </ul>
-<p><img src="https://cdn.nlark.com/yuque/__latex/8c463c9cf08b4e5c779c24d52c026bd5.svg#card=math&code=%5Cmin%5Climits_%7Bw%7Df%28w%29%3D%5Csum_%7Bk%3D1%7D%5E%7BN%7Dp_kF_k%28w%29%3D%5Csum_%7Bk%3D1%7D%5E%7BN%7D%5Cfrac%7Bn_k%7D%7Bn%7DF_k%28w%29%3D%5Cmathbb%7BE%7D_%7Bk%7D%5BF_k%28w%29%5D%2CF_k%28w%29%3D%5Cfrac%7B1%7D%7Bn_k%7D%5Csum_%7Bi%5Cin%20%5Cmathcal%7BP%7D_k%7Df_i%28w%29.&id=kBUP7"><br />其中，<img src="https://cdn.nlark.com/yuque/__latex/feadefed238f1edbb019e8248db1011b.svg#card=math&code=F_k%28w%29&id=S7EvF">可能为非凸函数。</p>
+<p>$$\min\limits_{w}f(w)=\sum_{k=1}^{N}p_kF_k(w)=\sum_{k=1}^{N}\frac{n_k}{n}F_k(w)=\mathbb{E}<em>{k}[F_k(w)],F_k(w)=\frac{1}{n_k}\sum</em>{i\in \mathcal{P}_k}f_i(w).$$<br>其中，$$F_k(w)$$可能为非凸函数。</p>
 <pre><code>  - 为了降低通信成本，一个联邦优化中的一般技术是，对每个设备，应用一个基于设备数据的本地目标函数，用作全局目标函数的surrogate（替代？）。在每轮外部迭代中，一组设备的子集被选中且这些设备的本地解算器被用作优化本地目标函数。设备之后上传模型更新，服务器聚合并更新全局模型。
   - 联邦学习场景中，处理灵活性能的关键是每个本地目标函数可以进行非精确的解算。这意味着更多的本地迭代意味着更精确的本地结果。
-  - ![](https://cdn.nlark.com/yuque/__latex/ae539dfcc999c28e25a0f3ae65c1de79.svg#card=math&amp;code=%5Cgamma&amp;id=ZRDJ8)-inexact solution
+  - $$\gamma$$-inexact solution
 </code></pre>
-<p>对函数<img src="https://cdn.nlark.com/yuque/__latex/6fdf1bead3b0bc0da3b2a57c61865c72.svg#card=math&code=h%28w%3Bw_0%29%3DF%28w%29%2B%5Cfrac%7B%5Cmu%7D%7B2%7D%7C%7Cw-w_0%7C%7C%5E2&id=fuC4Y">，且<img src="https://cdn.nlark.com/yuque/__latex/47fbb01c5d8a62d6f84cec91c7970edc.svg#card=math&code=%5Cgamma%5Cin%5B0%2C1%5D&id=gewAh">，我们说如果<img src="https://cdn.nlark.com/yuque/__latex/bfab4fb5ec92523d984d6fd9dacc915a.svg#card=math&code=%7C%7C%5Cnabla%20h%28w%5E%2A%3Bw_0%29%7C%7C%5Cle%20%5Cgamma%7C%7C%5Cnabla%20h%28w_0%3Bw_0%29%7C%7C&id=R64XM">，其中<img src="https://cdn.nlark.com/yuque/__latex/4ca2d095fca3f72c1628a669231f234c.svg#card=math&code=%5Cnabla%20h%28w%3Bw_0%29%3D%5Cnabla%20F%28w%29%2B%5Cmu%28w-w_0%29&id=G7PQq">，那么，<img src="https://cdn.nlark.com/yuque/__latex/1a50db4fe39a79074fcd888dc092fca1.svg#card=math&code=w%5E%2A&id=ZAWOD">是<img src="https://cdn.nlark.com/yuque/__latex/45dd897a4ec31ec73b857b1ae5819583.svg#card=math&code=%7B%5Cmin%7D_wh%28w%3Bw_0%29&id=SZwdR">的一个<img src="https://cdn.nlark.com/yuque/__latex/ae539dfcc999c28e25a0f3ae65c1de79.svg#card=math&code=%5Cgamma&id=LHpmt">-非精确解。<br />其中，越小的<img src="https://cdn.nlark.com/yuque/__latex/ae539dfcc999c28e25a0f3ae65c1de79.svg#card=math&code=%5Cgamma&id=UvhLs">对应越高的精确度。</p>
-<pre><code>  - 我们用![](https://cdn.nlark.com/yuque/__latex/ae539dfcc999c28e25a0f3ae65c1de79.svg#card=math&amp;code=%5Cgamma&amp;id=ftRyF)-不确定性在Section 4的分析中，通过每轮（外部轮）的本地解算器衡量本地计算的amount（数量；量级；计算量）。在早期讨论中，不同的设备在解决本地子问题的时候由于不同的系统条件会执行不同的进程，因此变化的![](https://cdn.nlark.com/yuque/__latex/ae539dfcc999c28e25a0f3ae65c1de79.svg#card=math&amp;code=%5Cgamma&amp;id=PT3Tf)是很重要的，其随着设备的不同和轮次的不同变化。为了符号的简便，Section 4中将讨论相同的![](https://cdn.nlark.com/yuque/__latex/ae539dfcc999c28e25a0f3ae65c1de79.svg#card=math&amp;code=%5Cgamma&amp;id=p8DDH)，之后在Corollary 9提供变化的![](https://cdn.nlark.com/yuque/__latex/ae539dfcc999c28e25a0f3ae65c1de79.svg#card=math&amp;code=%5Cgamma&amp;id=AH9wZ)。
+<p>对函数$$h(w;w_0)=F(w)+\frac{\mu}{2}||w-w_0||^2$$，且$$\gamma\in[0,1]$$，我们说如果$$||\nabla h(w^*;w_0)||\le \gamma||\nabla h(w_0;w_0)||$$，其中$$\nabla h(w;w_0)=\nabla F(w)+\mu(w-w_0)$$，那么，$$w^*$$是$${\min}_wh(w;w_0)$$的一个$$\gamma$$-非精确解。<br>其中，越小的$$\gamma$$对应越高的精确度。</p>
+<pre><code>  - 我们用$$\gamma$$-不确定性在Section 4的分析中，通过每轮（外部轮）的本地解算器衡量本地计算的amount（数量；量级；计算量）。在早期讨论中，不同的设备在解决本地子问题的时候由于不同的系统条件会执行不同的进程，因此变化的$$\gamma$$是很重要的，其随着设备的不同和轮次的不同变化。为了符号的简便，Section 4中将讨论相同的$$\gamma$$，之后在Corollary 9提供变化的$$\gamma$$。
   - FedAvg的参数设置
-     - 设备k的本地代理：![](https://cdn.nlark.com/yuque/__latex/7194bde46c84d7f84b1ca4afa41f0325.svg#card=math&amp;code=F_k%28%5Ccdot%29&amp;id=Zs7TY)
+     - 设备k的本地代理：$$F_k(\cdot)$$
      - 本地解释器：SGD
      - 同学习率/同本地轮数E
         - drop：对固定时间未完成E轮本地更新的客户端进行drop操作。
      - 每轮，设备子集K&lt;&lt;N
-  - McMahan论证了，FedAvg的超参优化是很重要的。尤其是，本地轮次的数量在收敛中起到了至关重要的影响。一方面，执行更多的本地论述允许更多的本地计算和潜在的通信减少，在通信受限的网络中可以大大提高总体的收敛速度（外部轮次降低）。另一方面，对于异构的本地目标函数![](https://cdn.nlark.com/yuque/__latex/7194bde46c84d7f84b1ca4afa41f0325.svg#card=math&amp;code=F_k%28%5Ccdot%29&amp;id=UQfnv)，大量的本地轮数可能导致每个设备的本地目标函数计算的最优参数与整体的目标函数相背——潜在的影响了收敛，更可能引起发散。而且，在异构系统联邦网络中，本地轮数过高可能提升设备给定通信轮数中无法完成训练的风险，而导致因此必须退出程序（指的是本地的训练参数与总体目标参数需求差距过大，导致在给定轮数无法收敛，影响最终性能，最终强制退出）（异构数据原因）。
+  - McMahan论证了，FedAvg的超参优化是很重要的。尤其是，本地轮次的数量在收敛中起到了至关重要的影响。一方面，执行更多的本地论述允许更多的本地计算和潜在的通信减少，在通信受限的网络中可以大大提高总体的收敛速度（外部轮次降低）。另一方面，对于异构的本地目标函数$$F_k(\cdot)$$，大量的本地轮数可能导致每个设备的本地目标函数计算的最优参数与整体的目标函数相背——潜在的影响了收敛，更可能引起发散。而且，在异构系统联邦网络中，本地轮数过高可能提升设备给定通信轮数中无法完成训练的风险，而导致因此必须退出程序（指的是本地的训练参数与总体目标参数需求差距过大，导致在给定轮数无法收敛，影响最终性能，最终强制退出）（异构数据原因）。
   - 实际上，在稳健收敛的前提下，通过某种方式尽量提高本地学习的轮数是很重要，毕竟有助于降低通信轮数。更重要的是，我们注意到，本地轮数的最佳设置可能随着每次（外部？）迭代或者每个设备而改变--可看作为一个本地数据和可变系统资源的函数。事实上，一个比设定固定数量的本地轮数更自然的方法，是允许轮数根据网络特征变化和通过累计异质性谨慎地合并解决方案。我们在下文介绍的FedProx中正式确定了这一策略。
 </code></pre>
 <ul>
@@ -288,17 +287,17 @@
 <li>由于计算硬件、网络连接、电源等因素，设备通常具有不同等资源约束。每台设备相同的本地轮数不现实。</li>
 <li>FedProx允许可变的本地工作量（基于系统资源），聚合部分解算（受限解算）。</li>
 <li>根据不同的外部轮次t，和设备k，设定以下定义：</li>
-<li><img src="https://cdn.nlark.com/yuque/__latex/632e67f6ea2245f4b1541452a1eac14c.svg#card=math&code=%5Cgamma_k%5Et&id=bm4pJ">-inexact solution</li>
+<li>$$\gamma_k^t$$-inexact solution</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<p>对函数<img src="https://cdn.nlark.com/yuque/__latex/a4fe6527f393e07e70e7cc21e627b639.svg#card=math&code=h_k%28w%3Bw_0%29%3DF_k%28w%29%2B%5Cfrac%7B%5Cmu%7D%7B2%7D%7C%7Cw-w_t%7C%7C%5E2&id=bjTH9">，且<img src="https://cdn.nlark.com/yuque/__latex/47fbb01c5d8a62d6f84cec91c7970edc.svg#card=math&code=%5Cgamma%5Cin%5B0%2C1%5D&id=HXro8">，我们说如果<img src="https://cdn.nlark.com/yuque/__latex/2f9aa41191205320ba04c1a6aac4f281.svg#card=math&code=%7C%7C%5Cnabla%20h_k%28w%5E%2A%3Bw_t%29%7C%7C%5Cle%20%5Cgamma_k%5Et%7C%7C%5Cnabla%20h_k%28w_t%3Bw_t%29%7C%7C&id=pQ0vs">，其中<img src="https://cdn.nlark.com/yuque/__latex/a279bdf0997a4722aa27b94b8a65eb31.svg#card=math&code=%5Cnabla%20h_k%28w%3Bw_t%29%3D%5Cnabla%20F_k%28w%29%2B%5Cmu%28w-w_t%29&id=anp1E">，那么，<img src="https://cdn.nlark.com/yuque/__latex/1a50db4fe39a79074fcd888dc092fca1.svg#card=math&code=w%5E%2A&id=RIkM1">是<img src="https://cdn.nlark.com/yuque/__latex/c633634be3abf508d0c07f808f9b64e6.svg#card=math&code=%7B%5Cmin%7D_wh_k%28w%3Bw_t%29&id=eGfzL">的一个<img src="https://cdn.nlark.com/yuque/__latex/632e67f6ea2245f4b1541452a1eac14c.svg#card=math&code=%5Cgamma_k%5Et&id=Sa4uH">-非精确解。<br />因为显而易见的，<img src="https://cdn.nlark.com/yuque/__latex/632e67f6ea2245f4b1541452a1eac14c.svg#card=math&code=%5Cgamma_k%5Et&id=O7n8o">越小，对应的本地精度越高，因此<img src="https://cdn.nlark.com/yuque/__latex/632e67f6ea2245f4b1541452a1eac14c.svg#card=math&code=%5Cgamma_k%5Et&id=qGCaG">可以看作是某种计算程度/本地轮数/精确度的正相关关系。针对不同轮数，不同设备设定不同的<img src="https://cdn.nlark.com/yuque/__latex/632e67f6ea2245f4b1541452a1eac14c.svg#card=math&code=%5Cgamma_k%5Et&id=mUWG9">，可以控制不同的本地目标函数停止的预期时间，实现对权重<img src="https://cdn.nlark.com/yuque/__latex/1a50db4fe39a79074fcd888dc092fca1.svg#card=math&code=w%5E%2A&id=GFHwH">的控制，也是实现对E的控制，尽管这部分工作可能是partial的，那么问题在于如何设定这样的<img src="https://cdn.nlark.com/yuque/__latex/632e67f6ea2245f4b1541452a1eac14c.svg#card=math&code=%5Cgamma_k%5Et&id=xybMW">呢？</p>
+<p>对函数$$h_k(w;w_0)=F_k(w)+\frac{\mu}{2}||w-w_t||^2$$，且$$\gamma\in[0,1]$$，我们说如果$$||\nabla h_k(w^*;w_t)||\le \gamma_k^t||\nabla h_k(w_t;w_t)||$$，其中$$\nabla h_k(w;w_t)=\nabla F_k(w)+\mu(w-w_t)$$，那么，$$w^*$$是$${\min}_wh_k(w;w_t)$$的一个$$\gamma_k^t$$-非精确解。<br>因为显而易见的，$$\gamma_k^t$$越小，对应的本地精度越高，因此$$\gamma_k^t$$可以看作是某种计算程度/本地轮数/精确度的正相关关系。针对不同轮数，不同设备设定不同的$$\gamma_k^t$$，可以控制不同的本地目标函数停止的预期时间，实现对权重$$w^*$$的控制，也是实现对E的控制，尽管这部分工作可能是partial的，那么问题在于如何设定这样的$$\gamma_k^t$$呢？</p>
 <pre><code>  - 特性2:近侧项（Appendix B）
      - 近侧项添加的意义：添加近侧项到本地子问题，来有效限制可变本地更新的影响。特别是，对比（取代）仅是最小化的本地损失函数，设备k使用选定的本地解算器来近似的最小化下面的目标函数：
 </code></pre>
-<p><img src="https://cdn.nlark.com/yuque/__latex/3ed15760d45caebbd2f4bdf0e59b102e.svg#card=math&code=%5Cmin_w%20h_k%28w%3Bw_0%29%3DF_k%28w%29%2B%5Cfrac%7B%5Cmu%7D%7B2%7D%7C%7Cw-w_t%7C%7C%5E2&id=ouYSs"><br />添加近侧项的意义：<strong>使得本地更新不要太过远离初始 global model w^t</strong>，在容忍系统异构性的前提下减少 Non-IID 的影响。</p>
+<p>$$\min_w h_k(w;w_0)=F_k(w)+\frac{\mu}{2}||w-w_t||^2$$<br>添加近侧项的意义：<strong>使得本地更新不要太过远离初始 global model w^t</strong>，在容忍系统异构性的前提下减少 Non-IID 的影响。</p>
 <pre><code>     - 近侧项在两个方面将对算法有益：
         - 通过限制本地更新——使其更接近（是因为加入类似后避免了过拟合？）初始（全局）模型的方式解决了统计异构性的问题，而无需手动设置本地更新轮数。
         - 允许安全合并由系统异构性导致的可变数量的本地工作。我们总结了FedProx步骤如下：
@@ -309,24 +308,23 @@
         - 本地解算器，而非一致的SGD
         - 多变的不完全的本地更新，而非完整
         - 每轮的设备子集，而非全部
-     - Section 5的实验证明，在存在系统异构性的情况下，运行部分工作是有益的，并且与FedAvg相比，改进的局部子问题![](https://cdn.nlark.com/yuque/__latex/c633634be3abf508d0c07f808f9b64e6.svg#card=math&amp;code=%7B%5Cmin%7D_wh_k%28w%3Bw_t%29&amp;id=pbWat)可以使异构数据集的收敛更加稳健和稳定。FedAvg是SGD计算固定轮数提交w，FedProx是计算目标函数，等待动态轮数后求得符合的w。在第4节中，我们还看到，使用近似项使FedProx更易于进行理论分析（即，本地目标函数可能表现得更好）。特别是，如果相应地选择μ，则Hessian函数可能是半正定的。因此，当![](https://cdn.nlark.com/yuque/__latex/7194bde46c84d7f84b1ca4afa41f0325.svg#card=math&amp;code=F_k%28%5Ccdot%29&amp;id=AiEm8)为非凸时，![](https://cdn.nlark.com/yuque/__latex/9cded9f5a6533b66d6ce861783e36d12.svg#card=math&amp;code=h_k&amp;id=uxz8d)为凸，当![](https://cdn.nlark.com/yuque/__latex/7194bde46c84d7f84b1ca4afa41f0325.svg#card=math&amp;code=F_k%28%5Ccdot%29&amp;id=bTSSz)为凸时，![](https://cdn.nlark.com/yuque/__latex/9cded9f5a6533b66d6ce861783e36d12.svg#card=math&amp;code=h_k&amp;id=T5WaD)为μ-强凸。
+     - Section 5的实验证明，在存在系统异构性的情况下，运行部分工作是有益的，并且与FedAvg相比，改进的局部子问题$$&#123;\min&#125;_wh_k(w;w_t)$$可以使异构数据集的收敛更加稳健和稳定。FedAvg是SGD计算固定轮数提交w，FedProx是计算目标函数，等待动态轮数后求得符合的w。在第4节中，我们还看到，使用近似项使FedProx更易于进行理论分析（即，本地目标函数可能表现得更好）。特别是，如果相应地选择μ，则Hessian函数可能是半正定的。因此，当$$F_k(\cdot)$$为非凸时，$$h_k$$为凸，当$$F_k(\cdot)$$为凸时，$$h_k$$为μ-强凸。
      - FedAvg是FedProx的一种特例：μ=0；解算器均为SGD；常数γ（对应于本地轮数），无关设备与外部轮数；Prox更加通用。
 </code></pre>
-<p><a name="ZwvBC"></a></p>
 <h2 id="FedProx的收敛分析"><a href="#FedProx的收敛分析" class="headerlink" title="FedProx的收敛分析"></a>FedProx的收敛分析</h2><ul>
 <li>首先提出一套衡量标准具体衡量本地函数之间的差异性，之后在IID假设下分析FedProx，其中考虑了动态的γ。</li>
 <li>本地差异性（local dissimilarity）<ul>
 <li>我们引入一种联邦网络中设备之间的差异性度量方式，其足以证明收敛性。其也可以通过更简单和更严格的梯度有界方差假设（Corollary 10）来满足，我们在第5节的实验中对此进行了探索。有趣的是，类似的假设已在其他地方进行了探索，但目的不同；我们在附录中对这些工作进行了讨论。</li>
-<li><img src="https://cdn.nlark.com/yuque/__latex/9d5ed678fe57bcca610140957afab571.svg#card=math&code=B&id=VDy0P">-本地差异性/区分度：</li>
+<li>$$B$$-本地差异性/区分度：</li>
 </ul>
 </li>
 </ul>
-<p>如果满足<img src="https://cdn.nlark.com/yuque/__latex/bd0dde4e5aaac0919e449c6d7131c7be.svg#card=math&code=%5Cmathbb%7BE%7D_k%5B%7C%7C%5Cnabla%20F_k%28w%29%7C%7C%5E2%5D%5Cle%7C%7C%5Cnabla%20f%28w%29%7C%7C%5E2B%5E2&id=OObEu">，我们就称本地代价函数<img src="https://cdn.nlark.com/yuque/__latex/7194bde46c84d7f84b1ca4afa41f0325.svg#card=math&code=F_k%28%5Ccdot%29&id=GddzD">在<img src="https://cdn.nlark.com/yuque/__latex/f1290186a5d0b1ceab27f4e77c0c5d68.svg#card=math&code=w&id=IUvGc">处是<img src="https://cdn.nlark.com/yuque/__latex/9d5ed678fe57bcca610140957afab571.svg#card=math&code=B&id=tzxh2">-本地区分的。我们进一步定义<img src="https://cdn.nlark.com/yuque/__latex/2a67559cf7745533a03d28368f0c4981.svg#card=math&code=B%28w%29%3D%5Csqrt%7B%5Cfrac%7B%5Cmathbb%7BE%7D_k%5B%7C%7C%5Cnabla%20F_k%28w%29%7C%7C%5E2%5D%7D%7B%7C%7C%5Cnabla%20f%28w%29%7C%7C%5E2%7D%7D&id=jvGgA">，其中<img src="https://cdn.nlark.com/yuque/__latex/a7b36e36e2a5ce92ed478801621b9f7c.svg#card=math&code=%7C%7C%5Cnabla%20f%28w%29%7C%7C%5E2%20%5Cneq%200&id=k1WFL">。<br />通过数学归纳法，可以看出该B(w)值，随着k每增加1，<img src="https://cdn.nlark.com/yuque/__latex/def42fde5b38b1e2aca66f4a90d6ecc3.svg#card=math&code=k%5Csum%20F_i%5E2-%28%5Csum%20F_i%29%5E2&id=bGCeX">的差值就会增加k个<img src="https://cdn.nlark.com/yuque/__latex/8a874307b5037a2e331357ba7a46aed5.svg#card=math&code=F%5E2_i-F%5E2_%7B%28k%2B1%29%7D%2C1%20%5Cle%20i%20%5Cle%20k.&id=lmoPR">所以相对应的比值也会增加，由此可理解为，k从0开始的每次加1，都是叠加新加入客户端与之前所有客户端的损失值差的平方。因此，B(w)会越来愈大。</p>
-<pre><code>  - 基于![](https://cdn.nlark.com/yuque/__latex/9d5ed678fe57bcca610140957afab571.svg#card=math&amp;code=B&amp;id=zzelo)-本地差异性/区分度，我们提出正式的差异性假设，并将其用于收敛分析。这仅仅要求B(w)是有界的。入后所述，我们的收敛率是一个关于统计异质性和设备差异性的函数。
+<p>如果满足$$\mathbb{E}_k[||\nabla F_k(w)||^2]\le||\nabla f(w)||^2B^2$$，我们就称本地代价函数$$F_k(\cdot)$$在$$w$$处是$$B$$-本地区分的。我们进一步定义$$B(w)=\sqrt{\frac{\mathbb{E}<em>k[||\nabla F_k(w)||^2]}{||\nabla f(w)||^2}}$$，其中$$||\nabla f(w)||^2 \neq 0$$。<br>通过数学归纳法，可以看出该B(w)值，随着k每增加1，$$k\sum F_i^2-(\sum F_i)^2$$的差值就会增加k个$$F^2_i-F^2</em>{(k+1)},1 \le i \le k.$$所以相对应的比值也会增加，由此可理解为，k从0开始的每次加1，都是叠加新加入客户端与之前所有客户端的损失值差的平方。因此，B(w)会越来愈大。</p>
+<pre><code>  - 基于$$B$$-本地差异性/区分度，我们提出正式的差异性假设，并将其用于收敛分析。这仅仅要求B(w)是有界的。入后所述，我们的收敛率是一个关于统计异质性和设备差异性的函数。
   - 假设 1:有界差异性
 </code></pre>
-<p>对部分<img src="https://cdn.nlark.com/yuque/__latex/b62ce1b42a86d3b781d62418bc90e05b.svg#card=math&code=%5Cepsilon%3E0&id=HdnTT">，存在一个<img src="https://cdn.nlark.com/yuque/__latex/edbc3b517589b868c2c2fbc0e69eb849.svg#card=math&code=B_%7B%5Cepsilon%7D&id=RdCJZ">，使得对所有的点<img src="https://cdn.nlark.com/yuque/__latex/92013d536a16e46f3d4a25df7b18ea12.svg#card=math&code=w%5Cin%20%5Cmathcal%7BS%7D%5Ec_%7B%5Cepsilon%7D%3D%5C%7Bw%7C%5C%20%7C%7C%5Cnabla%20f%28w%29%7C%7C%5E2%3E%5Cepsilon%5C%7D%2CB%28w%29%5Cle%20B_%7B%5Cepsilon%7D&id=fRsv2">。<br />这个假设的直观含义是，当全局模型没有收敛时(将梯度范数的平方小于ϵ视作收敛)，局部模型之间的差别是有界的。<br />简单理解一下，就是给定一个全局目标的量级的情况下（大于一个数），所有大于该量级的权重，它的本地区分度都小于此边界值。<br />为什么存在这个假设？这个假设符合一般规律吗？</p>
-<pre><code>  - 大多数的学习问题并不需要高精度的稳定解，过小的![](https://cdn.nlark.com/yuque/__latex/b62ce1b42a86d3b781d62418bc90e05b.svg#card=math&amp;code=%5Cepsilon%3E0&amp;id=bTn9A)并不能证明学习性能好，反而会因为过度拟合导致泛化性能差。可以合理假设，本地函数之间是存在相异性的。相异性越小，收敛越好。5.3.3中对真实数据集计算了相异性。
+<p>对部分$$\epsilon&gt;0$$，存在一个$$B_{\epsilon}$$，使得对所有的点$$w\in \mathcal{S}^c_{\epsilon}={w|\ ||\nabla f(w)||^2&gt;\epsilon},B(w)\le B_{\epsilon}$$。<br>这个假设的直观含义是，当全局模型没有收敛时(将梯度范数的平方小于ϵ视作收敛)，局部模型之间的差别是有界的。<br>简单理解一下，就是给定一个全局目标的量级的情况下（大于一个数），所有大于该量级的权重，它的本地区分度都小于此边界值。<br>为什么存在这个假设？这个假设符合一般规律吗？</p>
+<pre><code>  - 大多数的学习问题并不需要高精度的稳定解，过小的$$\epsilon&gt;0$$并不能证明学习性能好，反而会因为过度拟合导致泛化性能差。可以合理假设，本地函数之间是存在相异性的。相异性越小，收敛越好。5.3.3中对真实数据集计算了相异性。
 </code></pre>
 <ul>
 <li>FedProx分析<ul>
@@ -334,16 +332,15 @@
 </ul>
 </li>
 </ul>
-<p>令假设1成立，假定本地目标函数<img src="https://cdn.nlark.com/yuque/__latex/9353d3f34be4a9b672be4303774ad527.svg#card=math&code=F_k&id=fkjpV">是非凸，L-Lipschitz平滑，存在<img src="https://cdn.nlark.com/yuque/__latex/e0d83eb8d20a74b12660ec4b4e1fb7f1.svg#card=math&code=L_%7B%5C_%7D%3E0&id=dQMou">，使<img src="https://cdn.nlark.com/yuque/__latex/26b457e27668341853d64b932891e4f3.svg#card=math&code=%5Cnabla%5E2F_k%5Csucceq%20L_%7B%5C_%7DI&id=NFBxh">，其中<img src="https://cdn.nlark.com/yuque/__latex/03ac1e1700359d38807055b91db8fa43.svg#card=math&code=%5Coverline%5Cmu%3A%3D%5Cmu-L_%7B%5C_%7D%3E0.&id=OD8EL">假设<img src="https://cdn.nlark.com/yuque/__latex/2e8888b38f13145e5a6ff6721e996c3e.svg#card=math&code=w%5Et&id=ric2l">并非一个稳定解且本地目标函数为B-差异的，即<img src="https://cdn.nlark.com/yuque/__latex/d575365f76eef126b0b105345a5faaff.svg#card=math&code=B%28w%5Et%29%5Cle%20B.&id=uYqiS">如果算法2中的参数<img src="https://cdn.nlark.com/yuque/__latex/86000419b760bdf4c8e489e8d0c8f672.svg#card=math&code=%5Cmu%2CK%2C%5Cgamma&id=ItEZK">已被选择，那么：(<img src="https://cdn.nlark.com/yuque/__latex/754aae2423c97a0773aea7e1ba5779ab.svg#card=math&code=%5Crho%3E0&id=KcCM1">)<br /><img src="https://cdn.nlark.com/yuque/__latex/3e1be06f2e1fd21f3c4810608c2cfefc.svg#card=math&code=%5Crho%3D%28%5Cfrac%7B1%7D%7B%5Cmu%7D-%5Cfrac%7B%5Cgamma%20B%7D%7B%5Cmu%7D-%5Cfrac%7BB%281%2B%5Cgamma%29%5Csqrt%202%7D%7B%5Coverline%7B%5Cmu%7D%5Csqrt%20K%7D-%5Cfrac%7BLB%281%2B%5Cgamma%29%7D%7B%5Coverline%5Cmu%5Cmu%7D-%5Cfrac%7BL%281%2B%5Cgamma%29%5E2B%5E2%7D%7B2%5Coverline%5Cmu%5E2%7D-%5Cfrac%7BLB%5E2%281%2B%5Cgamma%5E2%29%7D%7B%5Coverline%5Cmu%5E2K%7D%282%5Csqrt%20%7B2K%7D%2B2%29%29%3E0&id=MT6lZ"><br />之后对于算法2中的每次迭代，我们有下列对全局目标的期望下降：<br /><img src="https://cdn.nlark.com/yuque/__latex/666d0bfd279a98926db222accf16ea59.svg#card=math&code=%5Cmathbb%7BE%7D_%7BS_t%7D%5Bf%28w%5E%7Bt%2B1%7D%29%5D%5Cle%20f%28w%5Et%29-%5Crho%7C%7C%5Cnabla%20f%28w%5Et%29%7C%7C%5E2&id=g8ZN2"><br /><img src="https://cdn.nlark.com/yuque/__latex/d2606be4e0cd2c9a6179c8f2e3547a85.svg#card=math&code=%5Crho&id=GnLNX">的存在，确保了每个外部轮都有稳定的，可预计的下降，这是确保收敛性能的前提，也是收敛轮数O()的前提。</p>
+<p>令假设1成立，假定本地目标函数$$F_k$$是非凸，L-Lipschitz平滑，存在$$L_{_}&gt;0$$，使$$\nabla^2F_k\succeq L_{_}I$$，其中$$\overline\mu:=\mu-L_{_}&gt;0.$$假设$$w^t$$并非一个稳定解且本地目标函数为B-差异的，即$$B(w^t)\le B.$$如果算法2中的参数$$\mu,K,\gamma$$已被选择，那么：($$\rho&gt;0$$)<br>$$\rho=(\frac{1}{\mu}-\frac{\gamma B}{\mu}-\frac{B(1+\gamma)\sqrt 2}{\overline{\mu}\sqrt K}-\frac{LB(1+\gamma)}{\overline\mu\mu}-\frac{L(1+\gamma)^2B^2}{2\overline\mu^2}-\frac{LB^2(1+\gamma^2)}{\overline\mu^2K}(2\sqrt {2K}+2))&gt;0$$<br>之后对于算法2中的每次迭代，我们有下列对全局目标的期望下降：<br>$$\mathbb{E}_{S_t}[f(w^{t+1})]\le f(w^t)-\rho||\nabla f(w^t)||^2$$<br>$$\rho$$的存在，确保了每个外部轮都有稳定的，可预计的下降，这是确保收敛性能的前提，也是收敛轮数O()的前提。</p>
 <pre><code>  - Remark 5:参数控制
   - 定理6:收敛率：FedProx：给定条件，以及满足定理4的假设条件，给出FedProx的轮数O()。
-  - 引理7:收敛--凸案例：令定理4假设成立，但修改Fk为凸函数，而非非凸函数。给定B和![](https://cdn.nlark.com/yuque/__latex/dc831b0b53f412c1970e788179e40a0a.svg#card=math&amp;code=%5Cgamma%5Et_k%3D0&amp;id=iwxWW)，可以计算出![](https://cdn.nlark.com/yuque/__latex/5331719b866feaddca69e3f1a5d4cbe8.svg#card=math&amp;code=%5Cmu%2C%5Crho&amp;id=hIDBK)。
-  - Remark 8:和SGD的比较：FedProx收获和SGD相同的渐近的收敛保证。在有界方差假设，对小的![](https://cdn.nlark.com/yuque/__latex/92e4da341fe8f4cd46192f21b6ff3aa7.svg#card=math&amp;code=%5Cepsilon&amp;id=jwUBp)，如果置换![](https://cdn.nlark.com/yuque/__latex/edbc3b517589b868c2c2fbc0e69eb849.svg#card=math&amp;code=B_%7B%5Cepsilon%7D&amp;id=SNa62)为其引理十中的上界，并选取足够大的![](https://cdn.nlark.com/yuque/__latex/c9faf6ead2cd2c2187bd943488de1d0a.svg#card=math&amp;code=%5Cmu&amp;id=Svh8d)。迭代复杂度和SGD相同。
+  - 引理7:收敛--凸案例：令定理4假设成立，但修改Fk为凸函数，而非非凸函数。给定B和$$\gamma^t_k=0$$，可以计算出$$\mu,\rho$$。
+  - Remark 8:和SGD的比较：FedProx收获和SGD相同的渐近的收敛保证。在有界方差假设，对小的$$\epsilon$$，如果置换$$B_&#123;\epsilon&#125;$$为其引理十中的上界，并选取足够大的$$\mu$$。迭代复杂度和SGD相同。
 </code></pre>
 <p>我们的FedProx分析并不能证明其比分布式SGD性能更好，甚至事实上FedProx会在每轮本地执行更多的工作。事实上，当数据通过非独立同分布生成时，本地的更新可能表现差于分布式SGD。但是，他们对FedProx的收敛提供了充分不必要条件。我们的分析是第一个意识到分析任何联邦优化方法for异构情况下的问题一的。</p>
-<pre><code>  - 引理 9：变化的![](https://cdn.nlark.com/yuque/__latex/ae539dfcc999c28e25a0f3ae65c1de79.svg#card=math&amp;code=%5Cgamma&amp;id=eQGbd):![](https://cdn.nlark.com/yuque/__latex/a6d3e666952804277814e06f1a174b6c.svg#card=math&amp;code=%5Crho%5Et%2C%5Cmathbb%7BE%7D_%7BS_t%7D%5Bf%28w%5E%7Bt%2B1%7D%29%5D%5Cle%20f%28w%5Et%29-%5Crho%5Et%7C%7C%5Cnabla%20f%28w%5Et%29%7C%7C%5E2&amp;id=NKyZl)。
+<pre><code>  - 引理 9：变化的$$\gamma$$:$$\rho^t,\mathbb&#123;E&#125;_&#123;S_t&#125;[f(w^&#123;t+1&#125;)]\le f(w^t)-\rho^t||\nabla f(w^t)||^2$$。
 </code></pre>
-<p><a name="v83c0"></a></p>
 <h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><ul>
 <li>Section 5.2：展示了FedProx针对系统异构下的未完整求解提升性能。</li>
 <li>Section 5.3:展示了Prox统计异构下的有效性（无论系统异构性）。<ul>
@@ -359,7 +356,8 @@
 </ul>
 <p>怎么设定的动态轮数？</p>
 <ul>
-<li>系统异质性模拟：设定本地轮数上限E，对于完成部分工作的clients（分别测试0，50，90%的stragglers）执行随机化的本地轮数x，x属于[1,E]。<ul>
+<li><p>系统异质性模拟：设定本地轮数上限E，对于完成部分工作的clients（分别测试0，50，90%的stragglers）执行随机化的本地轮数x，x属于[1,E]。</p>
+<ul>
 <li>额外的两种less异构环境：<ul>
 <li><ol>
 <li>首先设定了所有的设备的E=1，以类似的方式添加系统异构性。</li>
@@ -373,18 +371,22 @@
 </li>
 </ul>
 </li>
-<li>收敛性能讲随着统计异构性提高而变差。<ul>
-<li>​<br /></li>
+<li><p>收敛性能讲随着统计异构性提高而变差。</p>
+<ul>
+<li>​</li>
 </ul>
 </li>
-<li>参数u：u=0时，reduce to FedAvg。</li>
-<li>实验图1:u&gt;0时，对所有百分比的stragglers都具有更低的训练损失。</li>
-<li>实验图2：对合成数据集的计算，系统异质性越高，越合理，损失越低。u的存在可能降低IID数据情况下的收敛性能，但可以显著提高非IID情况下的收敛性能。</li>
+<li><p>参数u：u=0时，reduce to FedAvg。</p>
+</li>
+<li><p>实验图1:u&gt;0时，对所有百分比的stragglers都具有更低的训练损失。</p>
+</li>
+<li><p>实验图2：对合成数据集的计算，系统异质性越高，越合理，损失越低。u的存在可能降低IID数据情况下的收敛性能，但可以显著提高非IID情况下的收敛性能。</p>
+</li>
 </ul>
 <p>​</p>
 <p>​</p>
-<p>总结：本文总共做了两件事：提出了近侧项，完成了证明，近侧项相当于解除过拟合，实则是对过高本地的优化，使得本地可以在本地工作不同量级的情况下，完成收敛，经过证明，在一定假设前提下，确实可以做到每轮可预计的收敛，最终实现可预计的轮数量级。但存在的问题是，系统异构性是虚构的，数据是人造合成的，导致实验中轮数是随机生成的，和数据和系统本身并没有很好的关联（可以改进吗）。原本的gamma可以限定轮数，是有包含关系的，但是实验直接在给定轮数的前提下进行试验，实验的内容为每个客户端执行不同的轮数，最终的参数聚合观察和原有的FedAvg的效果。另一个实验是在相同异构性的系统条件（一样轮数）下，用合成数据（未使用数据集）执行non-IID数据的实验，发现Prox的收敛性能好于Avg。<br />​</p>
-<p>在最后的实验中，系统异构性被等价于了跑的本地轮数。<br />​</p>
+<p>总结：本文总共做了两件事：提出了近侧项，完成了证明，近侧项相当于解除过拟合，实则是对过高本地的优化，使得本地可以在本地工作不同量级的情况下，完成收敛，经过证明，在一定假设前提下，确实可以做到每轮可预计的收敛，最终实现可预计的轮数量级。但存在的问题是，系统异构性是虚构的，数据是人造合成的，导致实验中轮数是随机生成的，和数据和系统本身并没有很好的关联（可以改进吗）。原本的gamma可以限定轮数，是有包含关系的，但是实验直接在给定轮数的前提下进行试验，实验的内容为每个客户端执行不同的轮数，最终的参数聚合观察和原有的FedAvg的效果。另一个实验是在相同异构性的系统条件（一样轮数）下，用合成数据（未使用数据集）执行non-IID数据的实验，发现Prox的收敛性能好于Avg。<br>​</p>
+<p>在最后的实验中，系统异构性被等价于了跑的本地轮数。<br>​</p>
 <p>实际上相当于用近侧项取消了过拟合的问题，让non-IID在加入近侧项的算法里得到更好的效果，同时算法基于强凸函数经过了数学验证。</p>
 
       
@@ -578,6 +580,12 @@
   
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 
