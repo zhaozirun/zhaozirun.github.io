@@ -28,7 +28,7 @@
 <meta property="og:description" content="Tackling the Objective Inconsistency Problem in Heterogeneous Federated Optimization解决异构联合优化中的客观不一致问题  作者：Jianyu Wang，Qinghua Liu，Hao Liang，Gauri joshi，H.Vincent Poor arXiv preprint arXiv:2007.07481,">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-11-03T01:26:17.000Z">
-<meta property="article:modified_time" content="2021-11-03T07:31:42.101Z">
+<meta property="article:modified_time" content="2021-11-03T09:22:41.823Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -185,7 +185,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-11-03 09:26:17 / Modified: 15:31:42" itemprop="dateCreated datePublished" datetime="2021-11-03T09:26:17+08:00">2021-11-03</time>
+      <time title="Created: 2021-11-03 09:26:17 / Modified: 17:22:41" itemprop="dateCreated datePublished" datetime="2021-11-03T09:26:17+08:00">2021-11-03</time>
     </span>
 
   
@@ -227,7 +227,33 @@
 <blockquote>
 <p><em>原先直接上传最初和最终的<code>梯度差</code>，现在上传<code>梯度差/迭代次数</code></em></p>
 </blockquote>
-<h1 id="S2-System-model-and-prior-work"><a href="#S2-System-model-and-prior-work" class="headerlink" title="S2:System model and prior work"></a>S2:System model and prior work</h1><h1 id="S3-案例研究：展示目标不一致问题"><a href="#S3-案例研究：展示目标不一致问题" class="headerlink" title="S3:案例研究：展示目标不一致问题"></a>S3:案例研究：展示目标不一致问题</h1><h1 id="S4-异构联邦优化的新理论框架"><a href="#S4-异构联邦优化的新理论框架" class="headerlink" title="S4:异构联邦优化的新理论框架"></a>S4:异构联邦优化的新理论框架</h1><h1 id="S5-FedNova：提出的联邦归一化平均算法（Normalized-Averaging-Algorithm）"><a href="#S5-FedNova：提出的联邦归一化平均算法（Normalized-Averaging-Algorithm）" class="headerlink" title="S5:FedNova：提出的联邦归一化平均算法（Normalized Averaging Algorithm）"></a>S5:FedNova：提出的联邦归一化平均算法（Normalized Averaging Algorithm）</h1><h1 id="S6-实验结果"><a href="#S6-实验结果" class="headerlink" title="S6:实验结果"></a>S6:实验结果</h1><h1 id="S7-Concluding-Reamarks"><a href="#S7-Concluding-Reamarks" class="headerlink" title="S7:Concluding Reamarks"></a>S7:Concluding Reamarks</h1><p>$\min \limits_{w}f(w)=\sum_{k=1}^{N}p_kF_k(w=\sum_{k=1}^{N}\frac{n_k}{n}F_k(w)=\mathbb{E}_k[F_k(w)],F_k(w)=\frac{1}{n_k}\sum_{i\in \mathcal{P_k}}f_i(w)$</p>
+<h1 id="S2-System-model-and-prior-work"><a href="#S2-System-model-and-prior-work" class="headerlink" title="S2:System model and prior work"></a>S2:System model and prior work</h1><ul>
+<li><p>在我们的理论框架中，我们将$\tau_i$同样看作是一个跨轮数的标量，令每轮通信预设一个固定的是挂钟时间，那么$\tau_i$表示的就是在该时间窗口下，客户端$i$可以完成的<code>iterations</code>，该数据与轮数相关，与客户端相关。</p>
+<blockquote>
+<p><em>轮数-&gt;动态的挂钟时间-&gt;本地迭代次数</em></p>
+</blockquote>
+</li>
+<li><p><code>FedAvg</code> Baseline<br>本文视角：将权重w的聚合写为梯度差的聚合。本质是相同的。<br>$$FedAvg:x^{(t+1,0)}-x^{(t,0)}=\sum^m_{i=1}p_i\triangle_i^{(t)}=\sum^m_{i=1}p_i\cdot\eta\sum^{\tau_i-1}_{k=0}g_i(x_i^{(t,k)})$$</p>
+<blockquote>
+<p><em>其中，$x_i^{(t,k)}$表示客户端$i$的模型在$t$轮交互，$k$轮本地更新后的模型，$\triangle_i^{(t)}=x_i^{(t,\tau_i)}-x_i^{(t,0)}$表示累积的本地进程，$\eta$表示学习率，$g_i$表示梯度下降，$B$表示batchsize。总客户端数$m$为远大于每轮随机抽选的子集大小。</em></p>
+</blockquote>
+</li>
+<li><p><code>FedAvg</code>收敛分析</p>
+</li>
+</ul>
+<p>[8-10]首先通过假设本地目标相同和展示了<code>FedAvg</code>呗保证收敛到$F(x)$稳定点的方式对<code>FedAvg</code>进行了分析。这一分析之后呗扩展到non-IID数据分布和客户端取样案例中。但是，在这些工作中，他们假设所有的客户端的本地轮数和客户端优化器相同。此外，异步联邦优化算法采用了不同的方法，其允许客户端对过时版本的全局模型进行更新，且他们的分析被限制在IID本地数据集和凸本地函数上。</p>
+<ul>
+<li><code>FedProx</code></li>
+</ul>
+<p>为了缓解由于non-IID数据和异构本地更新造成的非一致性，提出对本地目标添加近侧项$\frac{\mu}{2}||x-x^{(t,0)}||^2$。其中$\mu\ge0$是一个可变参数。该近侧项奖每个本地模型拉近每轮初始的全局模型$x^{(t,0)}$。尽管实验证明<code>FedProx</code>提升了<code>FedAvg</code>，其收敛分析是受到强假设限制的，强过<code>FedAvg</code>，且仅对足够大的$\mu$有效。<code>FedProx</code>是我们通用框架的一个特例，我们的收敛分析提供了对参数$\mu$的敏锐观察。我们展示了一个更大的$\mu$减轻（但非消除）了目标非一致性，尽管是在较低收敛的情况下。我们提出的<code>FedNova</code>方法可以在保证一致性但不降低收敛速度的前提下提高<code>FedProx</code>。</p>
+<ul>
+<li>通过动量和跨客户端方差归约提升<code>FedAvg</code>性能</li>
+</ul>
+<p><code>FedAvg</code>的表现在最近的论文中通过在服务器端添加<code>momentum</code>，或者使用跨客户端的方差规约，例如<code>VRLSGD</code>和<code>SCAFFOLD</code>。另一方面，这些工作并没有考虑异构本地进程。我们提出的归一化平均方法<code>FedNova</code>与这些加速和方差规约技术是正交的，且易于结合。而且，<code>FedNova</code>也与梯度压缩/量化和公平聚合技术兼容互补。</p>
+<h1 id="S3-案例研究：展示目标不一致问题"><a href="#S3-案例研究：展示目标不一致问题" class="headerlink" title="S3:案例研究：展示目标不一致问题"></a>S3:案例研究：展示目标不一致问题</h1><ul>
+<li></li>
+</ul>
+<h1 id="S4-异构联邦优化的新理论框架"><a href="#S4-异构联邦优化的新理论框架" class="headerlink" title="S4:异构联邦优化的新理论框架"></a>S4:异构联邦优化的新理论框架</h1><h1 id="S5-FedNova：提出的联邦归一化平均算法（Normalized-Averaging-Algorithm）"><a href="#S5-FedNova：提出的联邦归一化平均算法（Normalized-Averaging-Algorithm）" class="headerlink" title="S5:FedNova：提出的联邦归一化平均算法（Normalized Averaging Algorithm）"></a>S5:FedNova：提出的联邦归一化平均算法（Normalized Averaging Algorithm）</h1><h1 id="S6-实验结果"><a href="#S6-实验结果" class="headerlink" title="S6:实验结果"></a>S6:实验结果</h1><h1 id="S7-Concluding-Reamarks"><a href="#S7-Concluding-Reamarks" class="headerlink" title="S7:Concluding Reamarks"></a>S7:Concluding Reamarks</h1><p>$\min \limits_{w}f(w)=\sum_{k=1}^{N}p_kF_k(w=\sum_{k=1}^{N}\frac{n_k}{n}F_k(w)=\mathbb{E}_k[F_k(w)],F_k(w)=\frac{1}{n_k}\sum_{i\in \mathcal{P_k}}f_i(w)$</p>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
     </div>
