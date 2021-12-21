@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.8.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="FedOpt: Towards Communication Efficiency and Privacy Preservation in Federated Learning’FedOpt：联邦学习中的通信效率和隐私保护  作者: Asad M, Moustafa A, Ito T.  FedOpt: towards communication efficiency and privacy pre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fedopt">
+<meta property="og:url" content="http://example.com/2021/11/22/Fedopt/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="FedOpt: Towards Communication Efficiency and Privacy Preservation in Federated Learning’FedOpt：联邦学习中的通信效率和隐私保护  作者: Asad M, Moustafa A, Ito T.  FedOpt: towards communication efficiency and privacy pre">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-11-22T01:07:00.000Z">
+<meta property="article:modified_time" content="2021-11-23T02:24:32.999Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Federated Learning">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/11/22/Fedopt/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/11/22/Fedopt/","path":"2021/11/22/Fedopt/","title":"Fedopt"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Fedopt | Hexo</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Hexo</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#FedOpt-Towards-Communication-Efficiency-and-Privacy-Preservation-in-Federated-Learning%E2%80%99"><span class="nav-number">1.</span> <span class="nav-text">FedOpt: Towards Communication Efficiency and Privacy Preservation in Federated Learning’</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Contribution"><span class="nav-number">1.2.</span> <span class="nav-text">Contribution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E6%9E%B6%E6%9E%84"><span class="nav-number">1.3.</span> <span class="nav-text">文章架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.4.</span> <span class="nav-text">预备知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FedOpt"><span class="nav-number">1.5.</span> <span class="nav-text">FedOpt</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sec-4-1"><span class="nav-number">1.5.1.</span> <span class="nav-text">Sec 4.1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sec-4-2"><span class="nav-number">1.5.2.</span> <span class="nav-text">Sec 4.2</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zhaozirun" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zhaozirun" rel="noopener" target="_blank">GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/22/Fedopt/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Fedopt
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-11-22 09:07:00" itemprop="dateCreated datePublished" datetime="2021-11-22T09:07:00+08:00">2021-11-22</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-11-23 10:24:32" itemprop="dateModified" datetime="2021-11-23T10:24:32+08:00">2021-11-23</time>
+      </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine: </span>
+  
+    <a title="valine" href="/2021/11/22/Fedopt/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/11/22/Fedopt/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="FedOpt-Towards-Communication-Efficiency-and-Privacy-Preservation-in-Federated-Learning’"><a href="#FedOpt-Towards-Communication-Efficiency-and-Privacy-Preservation-in-Federated-Learning’" class="headerlink" title="FedOpt: Towards Communication Efficiency and Privacy Preservation in Federated Learning’"></a>FedOpt: Towards Communication Efficiency and Privacy Preservation in Federated Learning’</h1><p>FedOpt：联邦学习中的通信效率和隐私保护</p>
+<ul>
+<li>作者: Asad M, Moustafa A, Ito T. </li>
+<li>FedOpt: towards communication efficiency and privacy preservation in federated learning[J]. Applied Sciences, 2020, 10(8): 2864.</li>
+</ul>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><h2 id="Contribution"><a href="#Contribution" class="headerlink" title="Contribution"></a>Contribution</h2><ul>
+<li>FedOpt利用新的稀疏压缩算法（SCA）来减少通信开销。特别是，SCA扩展了现有的top-k梯度压缩技术，并通过一种新机制实现了<em><strong>下游压缩</strong></em>。</li>
+<li>FedOpt采用轻量级同态加密，以高效且安全地聚合梯度。特别是，FedOpt提供了一个具体的<code>摘要</code>，其中加同态加密被完全应用，以<em><strong>消除键交换操作并增加纯文本的空间</strong></em>。</li>
+<li>为了进一步确保本地用户的隐私不被对手串通，FedOpt采用了一种基于拉普拉斯机制的差异隐私方案，以保持局部梯度的原创性。</li>
+<li>FedOpt允许用户在训练过程中下降，但精确度可以忽略不计。此外，性能评估还证明了FedOptin真实场景的训练准确性，以及其高效的通信和较低的计算开销</li>
+</ul>
+<h2 id="文章架构"><a href="#文章架构" class="headerlink" title="文章架构"></a>文章架构</h2><p>本文的其余部分组织如下：第2节介绍了系统模型和问题陈述。第3节简要介绍了联邦学习和密码学的主要技术。之后，我们将在第4节介绍FedOpt，并在第5节进行实验评估。我们将在第6节讨论相关工作，并与现有方法进行全面比较。最后，第7节对本文进行了总结，并提出了未来的发展方向。</p>
+<span id="more"></span>
+<h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><ul>
+<li>标准设置</li>
+<li>加同态加密</li>
+</ul>
+<h2 id="FedOpt"><a href="#FedOpt" class="headerlink" title="FedOpt"></a>FedOpt</h2><ul>
+<li>based on DSGD</li>
+<li>Sparse Compression Algorithm(SCA) 稀疏压缩算法</li>
+</ul>
+<h3 id="Sec-4-1"><a href="#Sec-4-1" class="headerlink" title="Sec 4.1"></a>Sec 4.1</h3><p>基于稀疏top-k（sparse top-k），一种压缩算法，展现了很好的的性能在分布式数据训练领域中。因此，我们以此为基础，开发了一个<em><strong>稀疏压缩算法</strong></em>，以减少模型训练期间的通信比特数。特别是，在SCA算法中，我们将<em><strong>时间稀疏性</strong></em>引入DSGD来减少通信延迟，灵感来于[6]。SCA允许每个用户执行多轮SGD，来计算更多的信息更新。这些更新计算为：<br>$$\triangle v = SGD_n(v,G_U)-v$$<br>其中$SGD_n(v,G_U)$表示在$n$轮对参数向量为$v$的DNN中的SGD后，梯度更新的参数集合，其中本地数据集合为$G_U$。基于实验Sec5.1和5.3。我们得出的结论是，通信延迟大幅降低，精度略有下降。有关现有压缩技术对通信延迟影响的详细信息，请参阅[18]。</p>
+<p><em>SCA</em></p>
+<p>我们使用每个用户的部分梯度来进行完整的梯度更新。为了实现这一点，我们设置最大和最小的部分$q$为0。然后，我们分别计算所有剩余负和正的梯度更新均值$\Psi$。之后，如果绝对值负均值$\Psi^-$小于正均值$\Psi^+$，我们设所有的正值为正均值，且所有的负值为0。否则，如果绝对值负均值$\Psi^-$大于正均值$\Psi^+$，那么我们设所有正值为0，且所有的负值为负均值$\Psi^-$。细节将置于Algorithm 1中。为了找到参数向量$v$中最大和最小的部分$q$，SCA需要$O(|v_n|)$个操作，其中$v_n$表示$v$中参数的总数。基于上述的技术，SCA减少了所需比特$b_num$的数量，从32到0， 通过计算稀疏梯度更新非零值到均值$\Psi$。这导致了通信成本降低高达$\times 3$。</p>
+<h3 id="Sec-4-2"><a href="#Sec-4-2" class="headerlink" title="Sec 4.2"></a>Sec 4.2</h3>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Federated-Learning/" rel="tag"># Federated Learning</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/11/03/FedNova/" rel="prev" title="FedNova">
+                  <i class="fa fa-chevron-left"></i> FedNova
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/11/23/FedAdam/" rel="next" title="FedAdam">
+                  FedAdam <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="valine-comments"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"cdn":"https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML","tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"fIHQrHJ5kHhpvmejTy1nleVd-gzGzoHsz","appKey":"NqNBxgt8RRGgxdylcyUBUTmY","serverURLs":"https://fihqrhj5.lc-cn-n1-shared.com","placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/2021/11/22/Fedopt/"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
+
+</body>
+</html>

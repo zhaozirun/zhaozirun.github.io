@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.8.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Adaptive Federated Optimization自适应联邦优化  作者: Sashank J. Reddi∗,  Zachary Charles∗,  Manzil Zaheer,  Zachary Garrett,  Keith Rush,Jakub Koneˇcný,  Sanjiv Kumar,  H. Brendan McMahan  arXiv preprint arXiv">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FedAdam">
+<meta property="og:url" content="http://example.com/2021/11/23/FedAdam/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Adaptive Federated Optimization自适应联邦优化  作者: Sashank J. Reddi∗,  Zachary Charles∗,  Manzil Zaheer,  Zachary Garrett,  Keith Rush,Jakub Koneˇcný,  Sanjiv Kumar,  H. Brendan McMahan  arXiv preprint arXiv">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-11-23T07:50:19.000Z">
+<meta property="article:modified_time" content="2021-12-08T09:34:51.105Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Federated Learning">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/11/23/FedAdam/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/11/23/FedAdam/","path":"2021/11/23/FedAdam/","title":"FedAdam"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>FedAdam | Hexo</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Hexo</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Adaptive-Federated-Optimization"><span class="nav-number">1.</span> <span class="nav-text">Adaptive Federated Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.2.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Contributions"><span class="nav-number">1.3.</span> <span class="nav-text">Contributions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Federated-Learning-and-FedAvg"><span class="nav-number">1.4.</span> <span class="nav-text">Federated Learning and FedAvg</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Adaptive-Federated-Optimization-1"><span class="nav-number">1.5.</span> <span class="nav-text">Adaptive Federated Optimization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FedADAGRAD%EF%BC%8CFedYOGI%EF%BC%8CFEDADAM"><span class="nav-number">1.6.</span> <span class="nav-text">FedADAGRAD，FedYOGI，FEDADAM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%AF%84%E4%BC%B0%EF%BC%9A%E6%95%B0%E6%8D%AE%E9%9B%86%EF%BC%8C%E4%BB%BB%E5%8A%A1%E5%92%8C%E6%96%B9%E6%B3%95"><span class="nav-number">1.7.</span> <span class="nav-text">实验评估：数据集，任务和方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%AF%84%E4%BC%B0%EF%BC%9A%E7%BB%93%E6%9E%9C"><span class="nav-number">1.8.</span> <span class="nav-text">实验评估：结果</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zhaozirun" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zhaozirun" rel="noopener" target="_blank">GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/23/FedAdam/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          FedAdam
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-11-23 15:50:19" itemprop="dateCreated datePublished" datetime="2021-11-23T15:50:19+08:00">2021-11-23</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-12-08 17:34:51" itemprop="dateModified" datetime="2021-12-08T17:34:51+08:00">2021-12-08</time>
+      </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine: </span>
+  
+    <a title="valine" href="/2021/11/23/FedAdam/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/11/23/FedAdam/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Adaptive-Federated-Optimization"><a href="#Adaptive-Federated-Optimization" class="headerlink" title="Adaptive Federated Optimization"></a>Adaptive Federated Optimization</h1><p>自适应联邦优化</p>
+<ul>
+<li>作者: Sashank J. Reddi∗,  Zachary Charles∗,  Manzil Zaheer,  Zachary Garrett,  Keith Rush,Jakub Koneˇcný,  Sanjiv Kumar,  H. Brendan McMahan </li>
+<li>arXiv preprint arXiv:2003.00295, 2020.</li>
+</ul>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><ul>
+<li>标准的联邦优化方法例如<code>FedAvg</code>，通常难以调整并表现出不利的收敛行为。</li>
+<li><code>自适应优化器</code>在非联邦环境中表现优异。包括<code>Adagrad</code>，<code>ADAM</code>和<code>YOGI</code>。</li>
+<li>提出上述对应的联邦版本，并分析了它们在一般非凸设置的异构数据中的收敛性。</li>
+<li>结果强调了客户端异构性和通信效率之间的相互作用。</li>
+</ul>
+<span id="more"></span>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ul>
+<li><p>原始数据不会共享给服务器和其他客户端。</p>
+<blockquote>
+<p>这使得FL区别于其他的传统分布式优化，即需要考虑有关异构数据的挑战。</p>
+</blockquote>
+</li>
+<li><p>FL的两大主要应用场景及设置区别。</p>
+<blockquote>
+<p>cross-silo（大型机构间的FL） &amp; cross-device（边缘设备间的FL）。在crossisilo FL中，大多数客户单均参与每一轮计算，且维护轮次之间的state。而在更有挑战性的cross-device中，我们主要关注，每轮参与的设备数量仅仅是设备总数的一部分。且客户端无法维护轮次之间的state。</p>
+</blockquote>
+</li>
+<li><p>标准的优化方法，例如<code>分布式SGD</code>，通常不适合FL且会引发高昂的通信代价。为了解决这一问题，许多联邦优化方法使用本地客户端更新，客户端可以在上传服务器前多次更新模型。这样可以减少训练模型所需通信的次数。其中一个方法即为<code>FedAvg</code>，其在本地数据集上执行多轮SGD。客户端与服务器进行通信交流模型，加权平均后形成新的全局模型。</p>
+</li>
+<li><p><code>FedAvg</code>存在的收敛性问题：</p>
+<ul>
+<li><code>client drift</code>：本地客户端模型脱离了全局最优模型</li>
+<li>缺少自适应性：FedAvg在思想上与SGD相似，可能不适用于具有<strong>重尾随机梯度噪声分布</strong>的环境，而这在训练语言模型时经常出现。自适应学习率可以结合过去迭代的知识来执行更加明智的优化。</li>
+</ul>
+</li>
+</ul>
+<h2 id="Contributions"><a href="#Contributions" class="headerlink" title="Contributions"></a>Contributions</h2><ul>
+<li>关注自适应性问题。提出了简单的框架来吸收FL中的自适应性。特别的是，我们提示出来一个通用的优化框架，其可以做到：<ul>
+<li>客户端使用客户端优化器（<code>client optimizer</code>）执行多轮训练来获取本地数据的最小训练loss。</li>
+<li>服务器通过一个基于梯度的服务器优化器（<code>server optimizer</code>），将其应用于客户端模型更新的均值，来以此更新其全局模型。</li>
+</ul>
+</li>
+</ul>
+<p>我们展示了<code>FedAvg</code>是特例，其特例的点在于，SGD被同时应用于服务器和客户端优化器，且服务器学习率为1。此框架可通过使用自适应优化器作为客户端或服务器优化器，来无缝实现自适应性。基于此，我们为FL开发了新颖的自适应优化技术，通过使用<code>per-coordinate</code>方法作为服务器优化器。通过关注自适应服务器优化，我们能够在不增加客户端存储和通信代价的前提下应用自适应学习率，且可以保证与跨设备（cross-device）的兼容性。</p>
+<ul>
+<li><p>具体贡献为：</p>
+<ul>
+<li>研究了通用的使用服务器和客户端优化器的联邦优化框架。此框架包括了很多现有的联邦优化方法，其中包括FedAvg。</li>
+<li>使用该框架设计了兼容跨设备，自适应联邦优化方法，提供了通用非凸设置下的收敛分析。这是FL的第一个使用自适应服务器优化的方法。我们展示了一个重要的本地轮数和客户端异构性志坚的相互作用。</li>
+<li>引入了面和可重复的实验benchmarks以比较联邦优化方法。这些benchmarks由七种不同且有代表性的FL任务，同时包括图片和文本数据，且具有不同的异构性和客户端数量。</li>
+<li>展示了我们的自适应优化器强大的实验表现，提高了常用的baseline。我们的结果展示了我们的方法更易于调整，并突出了其在跨设备设置中的实用性。</li>
+</ul>
+</li>
+<li><p>现有自适应方法存在的问题：</p>
+<ul>
+<li><code>ADAM</code>，在某些非凸环境下会收敛失败。因此，开发<code>YOGI</code>来提升收敛性。</li>
+<li>大多数自适应客户端优化是在<code>非联邦</code>设置中，<code>ADAALTER</code>是首个被提出的FL中自适应<code>客户端</code>优化方法。</li>
+<li>概念上讲，我们的方法与<code>LOOKAHEAD</code>优化器相关，其原本为非联邦设计。</li>
+<li>类似<code>ADAALTER</code>，一个<code>LOOKAHEAD</code>的自适应<code>FL变体</code>需要自适应的<code>客户端</code>优化。（Appendix B.3）</li>
+<li>Both <code>ADAALTER</code>和<code>LOOKAHEAD</code>都是我们框架的特例，且我们的工作更主要关注的是服务器优化。这让我们避免聚合客户端的优化器状态，使得我们的方法每轮最多需要一半的通信和客户端存储。</li>
+</ul>
+</li>
+</ul>
+<h2 id="Federated-Learning-and-FedAvg"><a href="#Federated-Learning-and-FedAvg" class="headerlink" title="Federated Learning and FedAvg"></a>Federated Learning and FedAvg</h2><p>三个假设</p>
+<ul>
+<li>L-Lipschitz Gradient<blockquote>
+<p>The function $F_i$ is $L$-smooth for all $i\in[m]$ i.e. $||\nabla F_i(x)-\nabla F_i(y)||&lt;L||x-y||$, for all $x,y\in \mathbb{R}^d$.</p>
+</blockquote>
+</li>
+<li>Bound Variance<blockquote>
+<p>The function $F_i$ have $\sigma_l$-bounded (local) variance i.e. $\mathbb{E}[||\nabla[f_i(x,z)]_j-[\nabla F_i(x)]<em>j||^2] = \sigma^2</em>{l,j}$ for all $x\in \mathbb{R}^d,j\in[d]$ and $i \in [m]$. Furthermore, we assume the (global) variance is bounded, $(1/m)||[\nabla F_i(x)]_j-[f(x,z)]<em>j||^2\le\sigma^2</em>{g,j}$ for all $x\in \mathbb{R}^d$ and $j \in [d]$.</p>
+</blockquote>
+</li>
+<li>Bounded Gradients<blockquote>
+<p>The function $f_i(x,z)$ have $G$-bounded gradients i.e., for any $i\in[m],x\in \mathbb{R}^d$ and $z\in \mathcal{Z}$ we have $|[\nabla f_i(x,z)]_j|\ge G$ for all $j\in[d]$.</p>
+</blockquote>
+</li>
+</ul>
+<p>抽象</p>
+<p><code>FedOpt</code>：一个抽象的Fed框架概念，其中客户端的优化（迭代）和服务器的聚合（迭代）被抽象为<code>ClientOpt</code>和<code>ServerOpt</code>。<code>FedOpt</code>通常允许自适应优化器（例如<code>ADAM</code>，<code>YOGI</code>）等，客户端的<code>momentum</code>技术（<code>FedAVGM</code>）也一样。在最通用的形式中，<code>FedOpt</code>使用<code>ClientOpt</code>，其更新依赖于全局的聚合数据（即过去迭代的服务器更新）。我们使用$\eta$和$\eta_l$来描述进行第$t$轮的学习率。虽然我们在这项工作中专注于特定的自适应优化器，但原则上我们可以使用任何自适应优化。</p>
+<p><code>FedOpt</code>更加抽象，尽管其具有更抽象的好处，但是仍存在一个根本问题：</p>
+<blockquote>
+<p>平均模型梯度差的负数$-\triangle_t$是否可用于全局服务器优化器的伪梯度？</p>
+</blockquote>
+<p>在本文中，我们通过为<code>FedOpt</code>建立一个理论基础提供了肯定的答案。我们证明了<code>ServerOpt</code>中使用这一$-\triangle_t$是有意义的，且可以保证在如下服务器优化器下都收敛，包括<code>ADAGRAD</code>，<code>ADAM</code>和<code>YOGI</code>。并基于我们的框架开发了自适应优化器。</p>
+<h2 id="Adaptive-Federated-Optimization-1"><a href="#Adaptive-Federated-Optimization-1" class="headerlink" title="Adaptive Federated Optimization"></a>Adaptive Federated Optimization</h2><p>我们具体化<code>FedOpt</code>的设置，其中<code>ServerOpt</code>是一个自适应优化器方法（<code>ADAGRAD</code>，<code>YOGI</code>或<code>ADAM</code>中的一个），且<code>ClientOpt</code>是SGD。通过使用服务器端的自适应方法（通常需要维护<code>state</code>）和客户端的SGD，我们确保我们的方法具有相同的通信成本，且可以在跨设备环境下工作。</p>
+<p><code>Algorithm 2</code>给出了我们方案的伪代码。一个可选的版本——使用批量数据和基于示例的客户端加权在<code>Algorithm 5</code>中展示。参数$\tau$控制算法的自适应度（<code>degree of adaptivity</code>）。$\tau$值越小，自适应度越高，对于适当选择的$\tau$，我们方法的服务器更新对于客户端学习率$\eta_l$的固定乘法变化是不变的。尽管我们很快就会看到，我们将需要$\eta_l$在我们的分析中足够小。</p>
+<h2 id="FedADAGRAD，FedYOGI，FEDADAM"><a href="#FedADAGRAD，FedYOGI，FEDADAM" class="headerlink" title="FedADAGRAD，FedYOGI，FEDADAM"></a>FedADAGRAD，FedYOGI，FEDADAM</h2><p>$$\begin{aligned}<br>m_t &amp;= \beta_1m_{t-1} + (1-\beta_1)\triangle_t \<br>v_t &amp;= v_{t-1} + \triangle^2_t(FEDADAGRAD)\<br>v_t &amp;= v_{t-1} + (1-\beta_2)\triangle^2_tsign(v_{t-1}-\triangle^2_t)(FEDYOGI)\<br>v_t &amp;= \beta_2v_{t-1} + (1-\beta_2)\triangle^2_t(FEDADAM)\<br>x_{t+1} &amp;= x_t + \eta\frac{m_t}{\sqrt{v_t}+\tau}<br>\end{aligned}$$</p>
+<p>收敛分析：对上述方法，我们提供了在通用非凸环境下，假设每轮均为<code>全部参与</code>，即$\mathcal{S}=[m]$。出于解释的目的，我们假设$\beta_1=0$，尽管我们的分析可以直接被扩展到$\beta_1&gt;0$。我们的分析同样可以被扩展为<code>部分参与</code>，即$\mathcal{S}&lt;[m]$，细节见Appendix A.2.1。此外，<code>FedAvg</code>通常使用的非统一加权可以很容易的被纳入我们的分析。</p>
+<blockquote>
+<p>Theorem 1: 令Assumption.1和3成立，令$L,G,\sigma_l,\sigma_g$为后续定义参数，令$\sigma^2=\sigma^2_l+6K\sigma^2_g$，考虑下面$\eta_l$的条件:</p>
+</blockquote>
+<p>这里要注意的是$L,G$表示Lipschitz连续的参数（描述导数变化率的大小）和每个样本的梯度上限。$\sigma_l,\sigma_g$表示本地样本梯度分布的方差（以样本为分布），和每个客户端平均梯度分布的方差（以客户端平均梯度为分布）。两个分别描述了本地环境下，样本与环境的差异度，以及全局环境下，每个客户端与所有客户端整体的差异度。$T,K$分别表示全局和本地轮数。</p>
+<blockquote>
+<p>Condition I: $n_l \le \frac{1}{16K}\min{ {\frac{1}{L},\frac{1}{T^{1/6}}[\frac{\tau}{120L^2G}]^{1/3}}},$</p>
+</blockquote>
+<blockquote>
+<p>Condition II: $n_l \le \frac{1}{16K}\min{ \frac{\tau\eta L}{2G^2},\frac{\tau}{4L\eta},\frac{1}{T^{1/4}}[\frac{\tau^2}{GL\eta}]^{1/2}}$</p>
+</blockquote>
+<p>对<code>FEDADAGRAD</code>应该满足：</p>
+<blockquote>
+<p>Corollary 1: </p>
+</blockquote>
+<p>对<code>FEDADAM</code>应该满足(类似<code>FEDYOGI</code>)：</p>
+<blockquote>
+<p>Theorem 2: </p>
+</blockquote>
+<p>为了突出轮次$K,T$的重要性，在计算$\min\limits_{0\le t\le T-1}\mathbb{E}||\nabla f(x_t)||^2$时，我们具体的选择了$\eta_l,\eta$和$\tau$。</p>
+<blockquote>
+<p>Corollary 2: </p>
+</blockquote>
+<blockquote>
+<p>Remark 1:<br>因此，通过仔细选择客户端和服务器的学习速率，可以降低客户端异构性的影响，但不能完全消除这种影响。</p>
+</blockquote>
+<p>讨论：<code>FedAvg</code>中所用的服务器的学习率一般为1不是<code>Theorems1/2</code>中最小化上界所必须的。$\sigma_g$的影响，作为客户端异构性的一种衡量方式，收敛可以通过选择足够大的$\eta_l$和相当大的$\eta$。因此，客户端异构性的影响可以通过仔细的选择客户端和服务器的学习率来降低，但是无法完全移除。我们的实验分析支持这一结论。</p>
+<p>讨论：</p>
+<ul>
+<li>收敛率的比较</li>
+</ul>
+<p>当分发轮数T远大于本地轮数K时，$$是引理1&amp;2的主要项。因此，我们得到了收敛率为$/√mKT$，这与一般非凸设置的已知最优比率相符合。我们同样注意到，IID设置对应于$\sigma_g=0$，我们符合其收敛率。类似于集中式设置，对比<code>FedAvg</code>，联邦自适应方法可以获得对常数依赖性更好的收敛速度，通过合并跨坐标维度的梯度的非均匀边界。</p>
+<ul>
+<li>学习率及其降低</li>
+</ul>
+<p>我们分析中的客户端学习率$1/\sqrt T$需要对轮数T的先验知识。但是，很容易将我们的分析推广到$\eta_l$以速率$1/\sqrt t$衰减。观察得知，需要通过衰减$\eta_l$的方式，而不是衰减$\eta$的方式进行收敛。这是因为，当$\eta_l$为常数时，本地更新引入的<code>client drift</code>（客户端漂移）现象不会随着T趋向于$\infty$而消失。学习率衰减可以提高实验性能（Appendix E.6）。同样，注意推论1和2中$\eta$和$\eta_l$之间的反比关系，这是我们在实证分析中观察到的（Appendix E.4）。</p>
+<ul>
+<li>通信有效性和本地步数</li>
+</ul>
+<p>总的算法通信代价取决于通信轮数T。从引理1&amp;2可知，更大的本地轮数K可以导致更少的通信轮数，只要$K=\mathcal{O}(T\sigma^2_l/\sigma^2_g)$。因此，本地迭代数量会随着$\sigma^2_l/\sigma^2_g$比例和T的增大而增大。在IID设置中，$\sigma^2_g=0$，因此本地轮数巨大（可以理解为纯粹是客户端在做所有的训练）。</p>
+<ul>
+<li>客户端异构性</li>
+</ul>
+<p>尽管仔细的客户端和服务器学习率选择可以降低客户端异构性的影响（<code>Remark 1</code>），但并不能完全移除。在高度异构设置中，可能必须使用类似控制变量等机制。然而，我们的实证分析表明，对于中等、自然产生的异质性，自适应优化器非常有效，尤其是在跨设备设置中（见图1）。此外，我们的算法可以直接与这些机制相结合。</p>
+<p>如前文所述，为了简单起见，我们的分析假设所有客户端完全参与$|\mathcal{S}|=[m]$。我们的分析可以直接推广到部分参与（其代价为收敛率中将出现额外的方差项，这取决$|\mathcal{S}|/m$，即取样的客户端比例）。</p>
+<h2 id="实验评估：数据集，任务和方法"><a href="#实验评估：数据集，任务和方法" class="headerlink" title="实验评估：数据集，任务和方法"></a>实验评估：数据集，任务和方法</h2><p>我们根据我们认为最广泛和最具代表性的<code>数据集</code>和<code>建模任务</code>来评估我们的算法。我们希望了解服务器自适应如何帮助改进收敛，特别是在跨设备设置中。为了实现这一点，我们在五个数据集中对七个不同且具有代表性的学习任务进行了模拟。值得注意的是，五个中有三个具有自然产生的客户机分区，高度代表了真实世界的FL问题。</p>
+<ul>
+<li><p>数据集，模型和任务</p>
+<ul>
+<li>CIFAR-10/CIFAR-100：ResNet-18（通过group norm置换batch norm）</li>
+<li>EMNIST：CNN for 特征识别 和 bottleneck autoencoder</li>
+<li>Shakespeare：RNN for 下一人物预测</li>
+<li>Stack Overflow：逻辑回归LR on bag-of-words vector：tag预测/RNN：下一词汇预测。（Appendix C）</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>部署</li>
+</ul>
+<p>将所有的算法部署至TensorFlow Federated，且提供所有优化器和基准任务的开源部署。客户的抽样是均匀随机的，在给定的一轮中没有替换，但有替换的时间点。我们的实现有两个重要特征。首先，我们不对每个客户进行K步培训，而是对每个客户的数据集进行e轮培训。其次，为了说明每个客户机的梯度步数的变化，我们对客户机输出的∆值进行加权平均（根据每位客户的培训样本数量）。这遵循了（McMahan等人，2017年）的方法，并且效果常常胜过均匀加权（Zaheer等人，2018年）。有关所用算法的完整说明，请参见附录B。</p>
+<ul>
+<li>优化器和超参数</li>
+</ul>
+<p>我们对<code>FedOpt</code>比较了<code>FEDADAGRAD,FEDADAM,FEDYOGI(with自适应的</code>$\tau$),其中<code>ClientOpt</code>和<code>ServerOpt</code>是学习率为$\eta_l$和$\eta$的<code>SGD</code>。对服务器来说，我们使用动量参数of 0(<code>FedAvg</code>) 和 0.9（<code>FedAVGM</code>）。我们基于每个任务固定了客户端的batchsize（Appendix D.3）。对<code>FedADAM</code>和<code>FedYOGI</code> ，我们设置了动量参数$\beta_1=0.9$和另一个动量参数$\beta_2=0.99$。我们也与<code>SCAFFOLD</code>进行了比较（Appendix B.2）。对下一词预测，我们每轮取样了50个客户端，对其他任务我们取样了10。本地轮数E=1。</p>
+<p>我们通过grid搜索调整来选择$\eta,\eta_l,\tau$。虽然这通常是使用集中设置中的验证集来完成的，但在FL中，此类数据通常是不可访问的，尤其是跨设备FL。因此，我们可以通过选择使过去100轮训练中的平均训练损失最小化的参数来进行调整。我们对EMNIST CR、莎士比亚和Stack Overflow任务进行了1500轮培训，对EMNIST AE进行了3000轮培训，对CIFAR任务进行了4000轮培训。有关最佳超参数的更多详细信息和记录，请参见Appendix D。</p>
+<ul>
+<li>验证指标</li>
+</ul>
+<p>对于所有任务，我们在整个培训过程中评估其在验证集上的性能。对于Stack Overflow任务，验证集包含10000个随机抽样的测试示例（取决于测试数据集的大小，请参见表2）。对于所有其他任务，我们使用整个测试集。由于所有算法都在服务器和客户端之间交换大小相等的对象，所以我们使用通信轮数作为真实训练时间的代理。</p>
+<h2 id="实验评估：结果"><a href="#实验评估：结果" class="headerlink" title="实验评估：结果"></a>实验评估：结果</h2><ul>
+<li><p>方法之间的比较</p>
+<ul>
+<li>稀疏梯度任务：文本数据通常会产生长尾特征分布，导致自适应优化器可以利用的近似稀疏梯度（Zhang等人，2019a）。两个Stack Overflow任务都表现出这样的行为，尽管它们在特征表示（单词包与可变长度令牌序列）、模型体系结构（GLM与深度网络）和优化环境（凸与非凸）方面存在显著差异。在这两项任务中，在客户机数据集中不出现的单词会产生几乎为零的客户机更新。因此，算法2中的累加器$v_{t,j}$对于与稀有词相关的参数来说仍然很小，允许在它们发生时进行较大的更新。这一直觉如图1所示，其中自适应优化器的性能显著优于非自适应优化器。对于非凸NWP任务，动量也是至关重要的，而它略微阻碍了凸LR任务的性能。</li>
+<li>密集梯度任务：CIFAR-10/100、EMNIST AE/CR和莎士比亚缺乏稀疏梯度结构。莎士比亚相对简单——大多数优化器一旦经过合适的调优，在足够的rounds后表现优秀，尽管FEDADAGRAD收敛更快。对CIFAR-10/100和EMNIST AE，自适应和动量对FedAvg提供了大量的提高。而且，YOGI和ADAM比FedAVGM对上述任务有更快的初始收敛。值得注意的是，ADAM和YOGI在整个过程中与非自适应优化器相当或优于非自适应优化器，且接近或由于FedADAGRAD。正如下面讨论的，ADAM和YOGI实际上在许多任务中比AVGM可以更简便的实现学习速率的调整。</li>
+<li>对比SCAFFOLD：对所有的任务，SCAFFOLD表现与FedAvg和我们的方法相当或者更差。在Stack Overflow任务中，SCAFFOLD和FedAvg几乎完全一致。这是因为客户端的数量（342477）使得我们不太可能对任何客户进行多次抽样。直观来说，SCAFFOLD没有机会来使用它的<em><strong>客户端控制变量</strong></em>。在其他任务中，SCAFFOLD表现比其他方法更差。我们提出两种可能的解释：第一，我们每轮只取样一部分客户端，因此大多数用户不被经常取样。直观来说，客户端控制变量可能过时，并可能因此降低性能。第二，SCAFFOLD与SVRG等方差缩减方法类似。虽然从理论上讲，这些方法的性能在实践中往往比SGD差。如Defazio等人（2014）所示，方差缩减通常仅在接近临界点时加速收敛。在跨设备设置中（通信轮数有限），SCAFFOLD实际上可能会降低经验性能。</li>
+</ul>
+</li>
+<li><p>易于调整：$\tau=10^{-3}$在大多数情况下工作优秀。大的$\tau$对集中式自适应优化器可以获得更好的性能。ADAM和YOGI的任务实验在对$\tau$上差异很小，除了stack overflow LR。</p>
+</li>
+</ul>
+<p>YOGI 自适应<br>ADAM 自适应<br>FedADAGRAD 自适应<br>FedAvg 非自适应<br>FedAvgM 非自适应<br>SCAFFOLD </p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Federated-Learning/" rel="tag"># Federated Learning</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/11/22/Fedopt/" rel="prev" title="Fedopt">
+                  <i class="fa fa-chevron-left"></i> Fedopt
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/12/03/CorrletatedDP/" rel="next" title="CorrletatedDP">
+                  CorrletatedDP <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="valine-comments"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"cdn":"https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML","tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"fIHQrHJ5kHhpvmejTy1nleVd-gzGzoHsz","appKey":"NqNBxgt8RRGgxdylcyUBUTmY","serverURLs":"https://fihqrhj5.lc-cn-n1-shared.com","placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/2021/11/23/FedAdam/"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
+
+</body>
+</html>
